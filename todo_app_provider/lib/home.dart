@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app_provider/widgets/AddTodoDialogWidget.dart';
 
 import 'pages/Completed.dart';
 import 'pages/TodoPage.dart';
@@ -11,7 +12,7 @@ class home extends StatefulWidget {
 }
 
 class _homeState extends State<home> {
-    @override
+  @override
   Widget build(BuildContext context) {
     int selectedIndex = 0;
 
@@ -21,11 +22,13 @@ class _homeState extends State<home> {
     ];
 
     final tabs = [
-      Container(),
-      Container(),
+      Container(
+        color: Colors.amber,
+      ),
+      Container(
+        color: Colors.deepOrange,
+      ),
     ];
-
-    
 
     return Scaffold(
       appBar: AppBar(
@@ -62,9 +65,12 @@ class _homeState extends State<home> {
           borderRadius: BorderRadius.circular(20),
         ),
         backgroundColor: Colors.black,
-        onPressed: () {
-          print('object');
-        },
+        onPressed: () => showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AddTodoDialogWidget();
+          },
+        ),
         child: Icon(
           Icons.add,
         ),
